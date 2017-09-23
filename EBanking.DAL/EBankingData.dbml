@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EBanking" Class="EBankingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LEO-PC\SQLEXPRESS;Initial Catalog=EBanking;Persist Security Info=True;User ID=sa" SettingsObjectName="EBanking.DAL.Properties.Settings" SettingsPropertyName="EBankingConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Cuentas" Member="Cuentas">
+    <Type Name="Cuenta">
+      <Column Name="CuentaId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TipoCuentaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Saldo" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="UsuarioId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Cuenta_Transferencia" Member="Transferencias" ThisKey="CuentaId" OtherKey="CuentaIdDestino" Type="Transferencia" />
+      <Association Name="Cuenta_Transferencia1" Member="Transferencias1" ThisKey="CuentaId" OtherKey="CuentaIdOrigen" Type="Transferencia" />
+      <Association Name="TipoCuenta_Cuenta" Member="TipoCuenta" ThisKey="TipoCuentaId" OtherKey="TipoCuentaId" Type="TipoCuenta" IsForeignKey="true" />
+      <Association Name="Usuario_Cuenta" Member="Usuario" ThisKey="UsuarioId" OtherKey="UsuarioId" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoCuenta" Member="TipoCuentas">
+    <Type Name="TipoCuenta">
+      <Column Name="TipoCuentaId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoCuenta_Cuenta" Member="Cuentas" ThisKey="TipoCuentaId" OtherKey="TipoCuentaId" Type="Cuenta" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Transferencias" Member="Transferencias">
+    <Type Name="Transferencia">
+      <Column Name="TransferenciaId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CuentaIdOrigen" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CuentaIdDestino" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Cuenta_Transferencia" Member="Cuenta" ThisKey="CuentaIdDestino" OtherKey="CuentaId" Type="Cuenta" IsForeignKey="true" />
+      <Association Name="Cuenta_Transferencia1" Member="Cuenta1" ThisKey="CuentaIdOrigen" OtherKey="CuentaId" Type="Cuenta" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuarios" Member="Usuarios">
+    <Type Name="Usuario">
+      <Column Name="UsuarioId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Usuario_Cuenta" Member="Cuentas" ThisKey="UsuarioId" OtherKey="UsuarioId" Type="Cuenta" />
+    </Type>
+  </Table>
+  <Function Name="dbo.Transferencias_SEL_ALL_BYCuentaIdOrigen" Method="Transferencias_SEL_ALL_BYCuentaIdOrigen">
+    <Parameter Name="CuentaIdOrigen" Parameter="cuentaIdOrigen" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Transferencias_SEL_ALL_BYCuentaIdOrigenResult">
+      <Column Name="TransferenciaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CuentaIdOrigen" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CuentaIdDestino" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Transferencias_SEL_ALL_BYUsuarioId" Method="Transferencias_SEL_ALL_BYUsuarioId">
+    <Parameter Name="UsuarioIdOrigen" Parameter="usuarioIdOrigen" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Transferencias_SEL_ALL_BYUsuarioIdResult">
+      <Column Name="TransferenciaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CuentaIdOrigen" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CuentaIdDestino" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CuentaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TipoCuentaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Saldo" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="UsuarioId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Transferencias_SEL_ALL_BYTransferenciaID" Method="Transferencias_SEL_ALL_BYTransferenciaID">
+    <Parameter Name="TransferenciaID" Parameter="transferenciaID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Transferencias_SEL_ALL_BYTransferenciaIDResult">
+      <Column Name="TransferenciaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CuentaIdOrigen" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CuentaIdDestino" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Monto" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Transferencias_INS_NEW" Method="Transferencias_INS_NEW">
+    <Parameter Name="CuentaIdOrigen" Parameter="cuentaIdOrigen" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CuentaIdDestino" Parameter="cuentaIdDestino" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Monto" Parameter="monto" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="VarChar(1000)" />
+    <Parameter Name="Fecha" Parameter="fecha" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Cuenta_SEL_ALL_BYCuentaID" Method="Cuenta_SEL_ALL_BYCuentaID">
+    <Parameter Name="CuentaID" Parameter="cuentaID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Cuenta_SEL_ALL_BYCuentaIDResult">
+      <Column Name="CuentaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TipoCuentaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Saldo" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="UsuarioId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TipoCuenta" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Cuentas_SEL_ALL_BYUSER" Method="Cuentas_SEL_ALL_BYUSER">
+    <Parameter Name="UsuarioID" Parameter="usuarioID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Cuentas_SEL_ALL_BYUSERResult">
+      <Column Name="CuentaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TipoCuentaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Saldo" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="UsuarioId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TipoCuenta" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

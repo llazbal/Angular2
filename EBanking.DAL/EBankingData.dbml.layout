@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="EBankingData">
+  <DataContextMoniker Name="/EBankingDataDataContext" />
+  <nestedChildShapes>
+    <classShape Id="08278de9-8bf3-4259-b64e-a3cfde3b9769" absoluteBounds="3.5, 1.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/EBankingDataDataContext/Cuenta" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5c1c9bcf-7ac7-40c6-804d-276b405fa3e7" absoluteBounds="3.515, 1.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c317b517-ea0d-4909-81df-602aea8f23ee" absoluteBounds="0.75, 4.25, 2, 1.1939925130208327">
+      <DataClassMoniker Name="/EBankingDataDataContext/TipoCuenta" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f1d7542f-0595-4526-ba32-2fb646870f09" absoluteBounds="0.76499999999999968, 4.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 4.84699625651042); (4.5 : 4.84699625651042); (4.5 : 2.70359537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/EBankingDataDataContext/TipoCuenta/TipoCuenta_Cuenta" />
+      <nodes>
+        <classShapeMoniker Id="c317b517-ea0d-4909-81df-602aea8f23ee" />
+        <classShapeMoniker Id="08278de9-8bf3-4259-b64e-a3cfde3b9769" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="0754deda-8adb-4638-8dfa-2e67964790d3" absoluteBounds="6.25, 0.875, 2, 1.9631982421874996">
+      <DataClassMoniker Name="/EBankingDataDataContext/Transferencia" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7f55dbf9-5273-432f-a3a0-13ef47934d22" absoluteBounds="6.2650000000000006, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 1.91429768880208); (6.25 : 1.91429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/EBankingDataDataContext/Cuenta/Cuenta_Transferencia" />
+      <nodes>
+        <classShapeMoniker Id="08278de9-8bf3-4259-b64e-a3cfde3b9769" />
+        <classShapeMoniker Id="0754deda-8adb-4638-8dfa-2e67964790d3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 1.45714884440104); (6.25 : 1.45714884440104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/EBankingDataDataContext/Cuenta/Cuenta_Transferencia1" />
+      <nodes>
+        <classShapeMoniker Id="08278de9-8bf3-4259-b64e-a3cfde3b9769" />
+        <classShapeMoniker Id="0754deda-8adb-4638-8dfa-2e67964790d3" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f5a3b2e2-1c3b-485a-87df-7baeacc9134d" absoluteBounds="0.75, 1.25, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/EBankingDataDataContext/Usuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5706194d-b885-4b88-a650-108b2d572631" absoluteBounds="0.76499999999999968, 1.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.84699625651042); (3.5 : 1.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/EBankingDataDataContext/Usuario/Usuario_Cuenta" />
+      <nodes>
+        <classShapeMoniker Id="f5a3b2e2-1c3b-485a-87df-7baeacc9134d" />
+        <classShapeMoniker Id="08278de9-8bf3-4259-b64e-a3cfde3b9769" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

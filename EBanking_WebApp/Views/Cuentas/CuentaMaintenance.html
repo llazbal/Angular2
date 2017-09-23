@@ -1,0 +1,31 @@
+﻿
+<div ng-controller="cuentaMaintenanceController as vm" ng-init="vm.initializeController()">
+
+    <h4 class="page-header">{{vm.title}}</h4>
+
+    <div class="box" style="width:100%">
+
+        <div class="box-content form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Tipo: </label>
+                    <label class="control-label">{{vm.tipoCuenta}}</label>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Número: </label>
+                    <label class="control-label">{{vm.cuentaID}}</label>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Saldo :</label>
+                    <label class="control-label">{{vm.Saldo}}</label>
+                </div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary btn-label-left" ng-click="vm.cuentaInquiry()">
+        <span><i class="fa fa-clock-o"></i></span>
+        <b>Volver</b>
+    </button>
+
+</div>

@@ -1,0 +1,5 @@
+D:\Leo\IT\Infocorp\Infocorp-EBanking\EBanking.Exceptions\bin\Debug\EBanking.Exceptions.dll
+D:\Leo\IT\Infocorp\Infocorp-EBanking\EBanking.Exceptions\bin\Debug\EBanking.Exceptions.pdb
+D:\Leo\IT\Infocorp\Infocorp-EBanking\EBanking.Exceptions\obj\Debug\EBanking.Exceptions.dll
+D:\Leo\IT\Infocorp\Infocorp-EBanking\EBanking.Exceptions\obj\Debug\EBanking.Exceptions.pdb
+D:\Leo\IT\Infocorp\Infocorp-EBanking\EBanking.Exceptions\obj\Debug\EBanking.Exceptions.csprojResolveAssemblyReference.cache
